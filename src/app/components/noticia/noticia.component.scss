@@ -1,0 +1,27 @@
+ion-card-title{
+    color:white !important;
+}
+
+.text-primary{
+    color: aqua;
+    font-size: 20px;
+    padding: 4px;
+}
+ion-card-content p{
+    color: white;
+    letter-spacing: 3px;
+    text-align: justify;
+}
+.more-options{
+   font-size: 25px;
+   position: absolute;
+   right: -10px;
+   top: -18px;
+}
+
+.iconFavorite ion-icon {
+    font-size: 20px;
+    position: absolute;
+    right: 57px;
+    color: var(--ion-color-danger);
+}

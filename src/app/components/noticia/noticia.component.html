@@ -1,0 +1,26 @@
+<ion-card class="welcome-card animated fadeIn fast">
+    <ion-card-header>
+      <ion-card-subtitle>
+        <span class="text-primary">{{i +1}} </span>
+        <span class="noticia-source-name">{{noticia.source.name}}</span>
+        <span *ngIf="onFavoritos===true" class="iconFavorite">
+            <ion-icon name="heart"></ion-icon>
+        </span>
+        <div class="more-options">
+          <ion-button fill=clear
+                      (click)="menuOptions()"
+          >
+          <ion-icon slot="icon-only" name=more></ion-icon>
+          </ion-button>
+        </div>
+
+      </ion-card-subtitle>
+      <ion-card-title (click)="showNewsDetail()">{{noticia.title}}</ion-card-title>
+    </ion-card-header>
+    <ion-img (click)="showNewsDetail()" [src]="noticia.urlToImage" *ngIf="noticia.urlToImage"></ion-img>
+    <ion-card-content>
+      <p>
+        {{noticia.description}}
+      </p>
+      </ion-card-content>
+    </ion-card>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NoticiasService } from 'src/app/services/noticias.service';
+import { Article } from '../../interfaces/interfces';
 
 @Component({
   selector: 'app-tab1',
@@ -7,13 +8,36 @@ import { NoticiasService } from 'src/app/services/noticias.service';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page implements OnInit{
-  // noticias: any;
+  noticias: Article[] = [];
 
   constructor(private serviceNoticias:NoticiasService) {
   }
- ngOnInit() {
-  this.serviceNoticias.getToHeadLines().subscribe(data => {
-    console.log('NOTICIAS RESP', data);
-  });
- }
+
+  ngOnInit() {
+    this.cargarNoticias();
+  }
+  loadData(event) {
+    this.cargarNoticias(event);
+  }
+
+  private cargarNoticias(event?) {
+    this.serviceNoticias
+          .getToHeadLines()
+          .subscribe(resp => {
+                    console.log('NOTICIAS RESP', resp);
+                    if (resp.articles.length === 0) {
+                        event.target.disabled = true;
+                        event.target.complete();
+                      return;
+                    }
+                    this.noticias.push(...resp.articles);
+                  
+                    if ( event) {
+                    event.target.complete();
+                    }
+          });
+   
+   
+
+  }
 }

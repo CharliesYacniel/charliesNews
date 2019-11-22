@@ -1,9 +1,29 @@
-<ion-header>
-  <ion-toolbar>
+<ion-header no-border>
+  <ion-toolbar color="dark">
     <ion-title>
-      Tab Three
+      Favoritos
     </ion-title>
   </ion-toolbar>
+
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content color="dark">
+
+<div *ngIf="noticias.noticiasLocales.length === 0" 
+class="noFavorites">
+  <span>
+    No hay noticias guardadas como favoritas
+  </span>
+</div>
+
+<app-noticias 
+        *ngIf="noticias.noticiasLocales.length > 0"
+        [onFavoritos]="true"
+        [noticias]="noticias.noticiasLocales"></app-noticias>
+
+<!-- <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+  <ion-infinite-scroll-content loadingSpinner="crescent" loadingText="Cargando noticias...">
+  </ion-infinite-scroll-content>
+</ion-infinite-scroll> -->
+
+</ion-content>
